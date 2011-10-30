@@ -12,13 +12,10 @@ public class ImportSomeCragsTest {
 
     private static final Logger log = Logger.getLogger(ImportSomeCragsTest.class);
 
-
     @Test
     public void grab_a_crag() {
 
-        final int cragId = 20;
-
-        UkClimbingImport.UkClimbingCrag ukClimbingCrag = new UkClimbingImport().loadCrag(cragId);
+        UkClimbingImport.UkClimbingCrag ukClimbingCrag = new UkClimbingImport().loadCrag(20);
 
         assertThat(ukClimbingCrag.id, is(20));
         assertThat(ukClimbingCrag.name, is("Baslow Edge"));
