@@ -97,7 +97,7 @@ public class UkClimbingConnector {
 
     private static String loadCragName(TagNode root) {
         TagNode h1 = root.findElementByName("h1", true);
-        return cleanUpValue(h1.getChildren().get(0));
+        return cleanUpValue(h1.getAllChildren().get(0));
     }
 
     private static UkClimbingGuideBook loadGuideBook(TagNode node, String href) {
