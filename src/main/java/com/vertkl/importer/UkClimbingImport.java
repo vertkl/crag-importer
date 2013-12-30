@@ -1,12 +1,14 @@
 package com.vertkl.importer;
 
-import org.apache.log4j.Logger;
+
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.io.File;
 
 public class UkClimbingImport {
 
-    private static final Logger log = Logger.getLogger(UkClimbingImport.class);
+    private static final Logger log = LoggerFactory.getLogger(UkClimbingImport.class);
 
     private final File outputDirectory;
     private final UkClimbingConnector ukClimbingConnector = new UkClimbingConnector();
