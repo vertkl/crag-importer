@@ -46,14 +46,32 @@
             <version>1.6.4</version>
         </dependency>
         <dependency>
-            <groupId>org.ixcode.platform</groupId>
-            <artifactId>platform-core</artifactId>
+            <groupId>org.ixcode</groupId>
+            <artifactId>platform.core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.ixcode.platform</groupId>
-            <artifactId>platform-http</artifactId>
+            <groupId>org.ixcode</groupId>
+            <artifactId>platform.http</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sourceforge.htmlcleaner</groupId>
+            <artifactId>htmlcleaner</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>1.3.RC2</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

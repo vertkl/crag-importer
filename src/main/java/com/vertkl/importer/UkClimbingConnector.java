@@ -66,15 +66,15 @@ public class UkClimbingConnector {
             Object[] results = root.evaluateXPath("//tr/td/p/b");
             for (Object node : results) {
                 TagNode tagNode = (TagNode) node;
-                String propertyName = tagNode.getChildren().get(0).toString();
+                String propertyName = getContentFromNode(tagNode).toString();
                 if ("Crag features".equals(propertyName)) {
-                    features = cleanUpValue(tagNode.getParent().getChildren().get(3));
+                    features = cleanUpValue(tagNode.getParent().getAllChildren().get(3));
                 } else if ("Faces".equals(propertyName)) {
-                    faces = cleanUpValue(tagNode.getParent().getChildren().get(8));
+                    faces = cleanUpValue(tagNode.getParent().getAllChildren().get(8));
                 } else if ("Altitude".equals(propertyName)) {
-                    altitude = cleanUpValue(tagNode.getParent().getChildren().get(6));
+                    altitude = cleanUpValue(tagNode.getParent().getAllChildren().get(6));
                 } else if ("Rocktype".equals(propertyName)) {
-                    Object o = tagNode.getParent().getChildren().get(4);
+                    Object o = tagNode.getParent().getAllChildren().get(4);
                     rockType = cleanUpValue(o);
                 }
             }
@@ -101,34 +101,46 @@ public class UkClimbingConnector {
     }
 
     private static UkClimbingGuideBook loadGuideBook(TagNode node, String href) {
-        String title = node.getChildren().get(0).toString();
+        String title = getContentFromNode(node).toString();
         URI uri = uri(BASE_PATH + href);
         return new UkClimbingGuideBook(title, uri);
     }
 
     private static UkClimbingArea loadArea(TagNode node) {
         String uri = "" + node.getAttributeByName("href");
-        return new UkClimbingArea(uri(BASE_PATH + uri), node.getChildren().get(0).toString());
+        return new UkClimbingArea(uri(BASE_PATH + uri), getContentFromNode(node).toString());
     }
 
     private static UkClimbingRoute loadRoute(TagNode node, String href) {
-        String name = node.getChildren().get(0).toString();
+        String name = getContentFromNode(node).toString();
 
         String grade = null;
         if (node.getParent().getChildren().size() > 2) {
             TagNode gradeNode = (TagNode) node.getParent().getParent().getChildren().get(2);
             TagNode fontNode = (TagNode) gradeNode.getChildren().get(0);
-            ContentNode contentNode = (ContentNode) fontNode.getChildren().get(0);
+            TagNode content = fontNode.getChildren().get(0);
+            System.out.println(content);
+            ContentNode contentNode = (ContentNode) getContentFromNode(fontNode);
             grade = cleanUpValue(contentNode);
         }
 
         if (grade == null) {
             TagNode gradeNode = (TagNode) node.getParent().getParent().getChildren().get(2);
-            ContentNode contentNode = (ContentNode) gradeNode.getChildren().get(0);
+            ContentNode contentNode = getContentFromNode(gradeNode);
             grade = cleanUpValue(contentNode);
         }
         int id = Integer.parseInt(href.substring(8));
         return new UkClimbingRoute(id, uri(BASE_PATH + href), name, grade);
     }
+
+    private static ContentNode getContentFromNode(TagNode node) {
+        Object child = node.getAllChildren().get(0);
+        if (child instanceof TagNode) {
+            return getContentFromNode((TagNode) child);
+        }
+        return (ContentNode) child;
+    }
+
+
 
 }
