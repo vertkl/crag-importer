@@ -75,5 +75,12 @@
         </dependency>
 
     </dependencies>
+
+    <build><resources>
+        <resource>
+            <directory>src/main/resource</directory>
+        </resource>
+    </resources>
+    </build>
 </project>
 
