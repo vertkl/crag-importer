@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ixcode.platform.logging.JodaTimePatternLayoutEncoder">
+            <pattern>[%d{yyyy-MM-DD'T'HH:mm:ss.SSSZZ z}]  %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.some.package" level="INFO"/>
+
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

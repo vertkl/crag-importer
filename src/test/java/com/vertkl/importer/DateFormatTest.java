@@ -1,5 +1,6 @@
 package com.vertkl.importer;
 
+import org.joda.time.DateTime;
 import org.junit.Test;
 
 import java.text.DateFormat;
@@ -10,11 +11,15 @@ public class DateFormatTest {
 
     @Test
     public void print_full_date() {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-DD'T'HH:mm:ss.SSSZ");
-        for (int i = 0; i< 100000; ++i){
-            String s = df.format(new Date());
-            System.out.println(s);
-        }
+        DateFormat df = new SimpleDateFormat("yyyy-MM-DD'T'HH:mm:ss.SSSZZ");
+        String s = df.format(new Date());
+        System.out.println("With standard date: " + s);
+    }
 
+
+    @Test
+    public void print_with_joda_time() {
+        DateTime dt = new DateTime();
+        System.out.println("With Joda Time: " + dt.toString("yyyy-MM-DD'T'HH:mm:ss.SSSZZ"));
     }
 }
