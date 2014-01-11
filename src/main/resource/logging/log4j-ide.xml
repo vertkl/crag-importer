@@ -6,14 +6,14 @@
     <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
             <!-- <param name="ConversionPattern" value="%d{HH:mm:ss} %-6p %-35c{1} %x  %m%n" />-->
-            <param name="ConversionPattern" value="%-6p %-20c{1} %x  %m%n" />
-            <!--<param name="ConversionPattern" value="%m%n" />-->
+            <!-- <param name="ConversionPattern" value="%-6p %-20c{1} %x  %m%n" />-->
+            <param name="ConversionPattern" value="%d{yyyy-MM-DD'T'HH:mm:ss.SSSZ}   %m%n" />   <!-- http://www.w3.org/TR/NOTE-datetime -->
         </layout>
     </appender>
 
 
     <root>
-        <priority value="debug" />
+        <priority value="info" />
         <appender-ref ref="consoleAppender" />
     </root>
 </log4j:configuration>
