@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
+import static java.lang.String.format;
+
 public class UkClimbingJsonWriter {
 
 
@@ -50,8 +52,8 @@ public class UkClimbingJsonWriter {
     }
 
     private static File generateFileFor(File outputDirectory, UkClimbingCrag crag) {
-            return new File(outputDirectory, "crag-" + crag.id + ".json");
-        }
+        return new File(outputDirectory, format("crag-%06d.json", crag.id));
+    }
 
 
 }
