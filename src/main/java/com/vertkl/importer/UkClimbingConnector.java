@@ -134,7 +134,11 @@ public class UkClimbingConnector {
     }
 
     private static ContentNode getContentFromNode(TagNode node) {
-        Object child = node.getAllChildren().get(0);
+        List allChildren = node.getAllChildren();
+        if (allChildren.size() == 0) {
+            return new ContentNode("");
+        }
+        Object child = allChildren.get(0);
         if (child instanceof TagNode) {
             return getContentFromNode((TagNode) child);
         }

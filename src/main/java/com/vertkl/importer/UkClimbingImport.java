@@ -22,7 +22,7 @@ public class UkClimbingImport {
         log.info("Importing all crags to: " + outputDirectory.getAbsolutePath());
         outputDirectory.mkdirs();
 
-        for (int cragId=0; cragId<10;++cragId) {
+        for (int cragId=27; cragId<28;++cragId) {
             UkClimbingCrag ukClimbingCrag = ukClimbingConnector.loadCrag(cragId);
             if (ukClimbingCrag != null) {
                 ukClimbingJsonWriter.writeTo(ukClimbingCrag, outputDirectory);
