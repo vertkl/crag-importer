@@ -1,10 +1,13 @@
 package com.vertkl.importer;
 
 
+import org.ixcode.logback.joda.LogbackJodaContext;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 import java.io.File;
+
+import static org.ixcode.logback.joda.LogbackJodaContext.configureLoggerContextWithJoda;
 
 public class UkClimbingImport {
 
@@ -22,7 +25,7 @@ public class UkClimbingImport {
         log.info("Importing all crags to: " + outputDirectory.getAbsolutePath());
         outputDirectory.mkdirs();
 
-        for (int cragId=0; cragId<20030;++cragId) {
+        for (int cragId=20029; cragId<20030;++cragId) {
             UkClimbingCrag ukClimbingCrag = ukClimbingConnector.loadCrag(cragId);
             if (ukClimbingCrag != null) {
                 ukClimbingJsonWriter.writeTo(ukClimbingCrag, outputDirectory);

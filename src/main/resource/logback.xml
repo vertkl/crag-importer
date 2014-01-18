@@ -2,7 +2,7 @@
 <configuration>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder class="ixcode.platform.logging.JodaTimePatternLayoutEncoder">
+        <encoder class="org.ixcode.logback.joda.JodaTimePatternLayoutEncoder">
             <pattern>[%d{yyyy-MM-DD'T'HH:mm:ss.SSSZZ z}]  %msg%n</pattern>
         </encoder>
     </appender>
