@@ -38,7 +38,7 @@
         </repository>
         <repository>
             <id>ixcode</id>
-            <url>http://ixcode.org/repo/</url>
+            <url>http://repo.ixcode.org/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
